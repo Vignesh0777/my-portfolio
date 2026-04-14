@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Vignesh V — Biomedical Engineer</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  :root{
+    --primary:#1D9E75;--primary-dark:#0F6E56;--primary-light:#E1F5EE;
+    --accent:#378ADD;--accent-light:#E6F1FB;
+    --bg:#f8fafb;--card:#fff;--text:#1a1a1a;--muted:#5f5f5f;--border:#e2e8f0;
+    --navy:#042C53;
+  }
+  body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+  a{text-decoration:none;color:inherit;}
+
+  nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem;}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:56px;}
+  .nav-logo{font-weight:700;font-size:1.1rem;color:var(--primary-dark);}
+  .nav-links{display:flex;gap:1.5rem;}
+  .nav-links a{font-size:0.9rem;color:var(--muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--primary);}
+
+  .hero{background:linear-gradient(135deg,#042C53 0%,#0F6E56 100%);color:#fff;padding:5rem 2rem 4rem;}
+  .hero-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:center;}
+  .award-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(255,215,0,0.2);border:1px solid rgba(255,215,0,0.5);color:#FFD700;font-size:0.78rem;padding:5px 12px;border-radius:20px;margin-bottom:1.2rem;font-weight:500;}
+  .hero h1{font-size:2.8rem;font-weight:700;line-height:1.15;margin-bottom:.5rem;}
+  .hero-tagline{font-size:1.05rem;color:rgba(255,255,255,0.8);margin-bottom:1.5rem;max-width:520px;}
+  .hero-contact{display:flex;flex-wrap:wrap;gap:.75rem;margin-bottom:1.8rem;}
+  .contact-pill{display:flex;align-items:center;gap:6px;background:rgba(255,255,255,0.12);padding:6px 14px;border-radius:20px;font-size:0.83rem;color:rgba(255,255,255,0.9);}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+  .btn-primary{background:#1D9E75;color:#fff;padding:10px 22px;border-radius:8px;font-size:.9rem;font-weight:600;border:none;cursor:pointer;transition:background .2s;}
+  .btn-primary:hover{background:#0F6E56;}
+  .btn-outline{background:transparent;color:#fff;padding:10px 22px;border-radius:8px;font-size:.9rem;font-weight:600;border:1.5px solid rgba(255,255,255,0.5);cursor:pointer;transition:all .2s;}
+  .btn-outline:hover{background:rgba(255,255,255,0.1);}
+  .hero-avatar{width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,0.15);border:3px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:3.5rem;font-weight:700;color:#fff;flex-shrink:0;}
+
+  section{padding:4rem 2rem;}
+  .section-inner{max-width:1100px;margin:0 auto;}
+  .section-label{font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--primary);margin-bottom:.5rem;}
+  .section-title{font-size:1.9rem;font-weight:700;margin-bottom:2.5rem;color:var(--navy);}
+
+  .about-grid{display:grid;grid-template-columns:2fr 1fr;gap:3rem;align-items:start;}
+  .about-text p{color:var(--muted);line-height:1.8;margin-bottom:1rem;}
+  .stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+  .stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;text-align:center;}
+  .stat-num{font-size:1.8rem;font-weight:700;color:var(--primary);}
+  .stat-desc{font-size:.8rem;color:var(--muted);margin-top:2px;}
+
+  .skills-bg{background:var(--card);}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+  .skill-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.5rem;}
+  .skill-card h3{font-size:1rem;font-weight:600;margin-bottom:1.2rem;color:var(--navy);display:flex;align-items:center;gap:8px;}
+  .skill-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:14px;}
+  .icon-green{background:var(--primary-light);}
+  .icon-blue{background:var(--accent-light);}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;}
+  .tag{background:#fff;border:1px solid var(--border);color:var(--text);font-size:.8rem;padding:4px 12px;border-radius:20px;}
+  .tag-primary{background:var(--primary-light);border-color:#9FE1CB;color:var(--primary-dark);}
+  .tag-blue{background:var(--accent-light);border-color:#B5D4F4;color:#185FA5;}
+
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem;}
+  .project-card{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:transform .2s,box-shadow .2s;}
+  .project-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08);}
+  .project-top{background:linear-gradient(135deg,var(--primary-light),var(--accent-light));padding:1.8rem;display:flex;align-items:center;justify-content:center;font-size:2.2rem;}
+  .project-body{padding:1.4rem;}
+  .project-year{font-size:.75rem;font-weight:600;color:var(--primary);letter-spacing:.05em;text-transform:uppercase;margin-bottom:.4rem;}
+  .project-title{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:.7rem;line-height:1.3;}
+  .project-desc{font-size:.87rem;color:var(--muted);line-height:1.7;margin-bottom:1rem;}
+  .project-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  .project-tag{font-size:.75rem;padding:3px 10px;border-radius:12px;background:var(--primary-light);color:var(--primary-dark);font-weight:500;}
+
+  .exp-bg{background:var(--card);}
+  .timeline{position:relative;padding-left:2rem;}
+  .timeline::before{content:'';position:absolute;left:7px;top:8px;bottom:8px;width:2px;background:var(--border);}
+  .exp-item{position:relative;margin-bottom:2.5rem;}
+  .exp-dot{position:absolute;left:-2rem;top:5px;width:14px;height:14px;border-radius:50%;background:var(--primary);border:2px solid #fff;box-shadow:0 0 0 2px var(--primary);}
+  .exp-header{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:.5rem;margin-bottom:.4rem;}
+  .exp-role{font-weight:700;font-size:1rem;color:var(--navy);}
+  .exp-date{font-size:.8rem;color:var(--muted);background:var(--bg);padding:3px 10px;border-radius:12px;border:1px solid var(--border);}
+  .exp-org{font-size:.9rem;color:var(--primary);font-weight:600;margin-bottom:.6rem;}
+  .exp-bullets{list-style:none;padding:0;}
+  .exp-bullets li{font-size:.87rem;color:var(--muted);padding:.25rem 0 .25rem 1.2rem;position:relative;line-height:1.6;}
+  .exp-bullets li::before{content:'→';position:absolute;left:0;color:var(--primary);}
+
+  .edu-card{background:linear-gradient(135deg,#042C53,#0F6E56);border-radius:16px;padding:2rem;color:#fff;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+  .edu-degree{font-size:1.2rem;font-weight:700;margin-bottom:.3rem;}
+  .edu-uni{font-size:.95rem;color:rgba(255,255,255,.8);margin-bottom:1rem;}
+  .edu-scores{display:flex;gap:1.5rem;flex-wrap:wrap;}
+  .edu-score{text-align:center;}
+  .edu-score .num{font-size:1.6rem;font-weight:700;color:#FFD700;}
+  .edu-score .label{font-size:.75rem;color:rgba(255,255,255,.7);margin-top:2px;}
+  .edu-batch{background:rgba(255,255,255,.15);padding:5px 14px;border-radius:20px;font-size:.85rem;align-self:flex-start;}
+
+  .leadership-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;}
+  .lead-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;display:flex;align-items:center;gap:12px;}
+  .lead-icon{width:40px;height:40px;border-radius:10px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;}
+  .lead-info .role{font-weight:600;font-size:.9rem;color:var(--navy);}
+  .lead-info .org{font-size:.8rem;color:var(--muted);}
+
+  .award-section{background:linear-gradient(135deg,#FAC775,#FAEeDA);border-radius:16px;padding:2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;}
+  .award-icon-big{font-size:3rem;flex-shrink:0;}
+  .award-title{font-size:1.15rem;font-weight:700;color:#412402;margin-bottom:.3rem;}
+  .award-org{font-size:.9rem;color:#633806;}
+
+  .contact-bg{background:var(--card);}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1rem;}
+  .contact-card{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem;display:flex;align-items:center;gap:12px;}
+  .contact-icon{width:36px;height:36px;border-radius:8px;background:var(--primary-light);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .contact-label{font-size:.75rem;color:var(--muted);}
+  .contact-val{font-size:.9rem;font-weight:600;color:var(--navy);}
+
+  footer{text-align:center;padding:2rem;font-size:.85rem;color:var(--muted);border-top:1px solid var(--border);}
+
+  @media(max-width:700px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-avatar{display:none;}
+    .hero h1{font-size:2rem;}
+    .about-grid{grid-template-columns:1fr;}
+    .nav-links{gap:.75rem;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">VV</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <div>
+      <div class="award-badge">⭐ AIMO Best Innovative Design Award 2026</div>
+      <h1>Vignesh V</h1>
+      <p class="hero-tagline">Biomedical Engineering Graduate · Medical Devices · QA &amp; Regulatory Affairs · Production &amp; QC</p>
+      <div class="hero-contact">
+        <span class="contact-pill">📍 Chennai, India</span>
+        <span class="contact-pill">📞 +91 6380173323</span>
+        <span class="contact-pill">✉️ vigneshbiomed07@gmail.com</span>
+      </div>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Get In Touch</button>
+        <button class="btn-outline" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">View Projects</button>
+      </div>
+    </div>
+    <div class="hero-avatar">VV</div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="section-inner">
+    <div class="section-label">About Me</div>
+    <div class="section-title">Passionate about medical device quality &amp; safety</div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>I'm a final-year Biomedical Engineering student at College of Engineering Guindy (CEG), Anna University — one of India's most prestigious engineering institutions. My focus is on ensuring medical devices are safe, compliant, and of the highest quality.</p>
+        <p>With hands-on experience in clinical hardware, ISO 13485 compliance documentation, and embedded systems, I'm seeking roles in Medical Device QA, Quality Control, Production Engineering, or Regulatory Affairs where I can contribute meaningfully from day one.</p>
+        <p>Winner of the AIMO Best Innovative Design Award 2026, recognising my work on innovative medical hardware solutions at CEG Anna University.</p>
+      </div>
+      <div class="stat-cards">
+        <div class="stat-card"><div class="stat-num">6.86</div><div class="stat-desc">CGPA (B.E.)</div></div>
+        <div class="stat-card"><div class="stat-num">90%</div><div class="stat-desc">HSC Score</div></div>
+        <div class="stat-card"><div class="stat-num">98.8%</div><div class="stat-desc">SSLC Score</div></div>
+        <div class="stat-card"><div class="stat-num">2+</div><div class="stat-desc">Projects Built</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:1rem 2rem 3rem;">
+  <div class="section-inner">
+    <div class="award-section">
+      <div class="award-icon-big">🏆</div>
+      <div>
+        <div class="award-title">AIMO Best Innovative Design Award 2026</div>
+        <div class="award-org">All India Manufacturers Organisation Industrial R&amp;D Trust · CEG Anna University · 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="skills-bg">
+  <div class="section-inner">
+    <div class="section-label">Skills</div>
+    <div class="section-title">Technical expertise &amp; domain knowledge</div>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <h3><div class="skill-icon icon-green">🏥</div> Medical Device Domain</h3>
+        <div class="tags">
+          <span class="tag tag-primary">ISO 13485</span>
+          <span class="tag tag-primary">QA / QC Concepts</span>
+          <span class="tag tag-primary">Testing Protocols</span>
+          <span class="tag tag-primary">Infusion Systems</span>
+          <span class="tag tag-primary">Patient Monitoring</span>
+          <span class="tag tag-primary">Device Maintenance Logs</span>
+          <span class="tag tag-primary">Safety Checklists</span>
+          <span class="tag tag-primary">IQ/OQ/PQ Validation</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><div class="skill-icon icon-blue">⚙️</div> Technical &amp; Tools</h3>
+        <div class="tags">
+          <span class="tag tag-blue">Embedded Systems</span>
+          <span class="tag tag-blue">Microcontrollers</span>
+          <span class="tag tag-blue">Sensors &amp; Transducers</span>
+          <span class="tag tag-blue">Python</span>
+          <span class="tag tag-blue">Embedded C</span>
+          <span class="tag tag-blue">Signal Processing</span>
+          <span class="tag tag-blue">MS Excel / Office</span>
+          <span class="tag tag-blue">Hardware Troubleshooting</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <h3><div class="skill-icon icon-green">📋</div> Regulatory &amp; Quality</h3>
+        <div class="tags">
+          <span class="tag tag-primary">Regulatory Affairs</span>
+          <span class="tag tag-primary">Compliance Documentation</span>
+          <span class="tag tag-primary">Validation Protocols</span>
+          <span class="tag tag-primary">Device Specifications</span>
+          <span class="tag tag-primary">Test Documentation</span>
+          <span class="tag tag-primary">Performance Records</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-inner">
+    <div class="section-label">Projects</div>
+    <div class="section-title">Academic &amp; research work</div>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-top">🦶</div>
+        <div class="project-body">
+          <div class="project-year">2025 – 26 · Final Year Project</div>
+          <div class="project-title">Smart Insole System for Postoperative Monitoring</div>
+          <div class="project-desc">Designed wearable hardware integrating pressure sensors, microcontrollers &amp; wireless modules for real-time postoperative patient monitoring. Prepared IQ/OQ/PQ-style hardware validation protocols and compliance-ready test documentation aligned with ISO 13485.</div>
+          <div class="project-tags">
+            <span class="project-tag">Pressure Sensors</span>
+            <span class="project-tag">IoT / Wireless</span>
+            <span class="project-tag">ISO 13485</span>
+            <span class="project-tag">IQ/OQ/PQ</span>
+            <span class="project-tag">Wearable</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-top">🚶</div>
+        <div class="project-body">
+          <div class="project-year">2024 – 25</div>
+          <div class="project-title">Gait-Based Fall Risk Prediction System</div>
+          <div class="project-desc">Built a hardware-software system using motion sensors to capture gait data and predict fall risk — directly relevant to patient safety monitoring. Validated sensor accuracy and prepared structured performance documentation and testing records.</div>
+          <div class="project-tags">
+            <span class="project-tag">Motion Sensors</span>
+            <span class="project-tag">Signal Processing</span>
+            <span class="project-tag">Patient Safety</span>
+            <span class="project-tag">Validation</span>
+            <span class="project-tag">Python</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience" class="exp-bg">
+  <div class="section-inner">
+    <div class="section-label">Experience</div>
+    <div class="section-title">Internships &amp; training</div>
+    <div class="timeline">
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-role">Clinical Hardware &amp; Compliance Trainee</div>
+          <div class="exp-date">2024</div>
+        </div>
+        <div class="exp-org">GEM Hospital, Chennai</div>
+        <ul class="exp-bullets">
+          <li>Observed regulated medical hardware (infusion monitors, patient monitors) in a live clinical environment.</li>
+          <li>Assisted in device maintenance logs, compliance checklists, and safety protocol documentation for regulated medical equipment.</li>
+        </ul>
+      </div>
+      <div class="exp-item">
+        <div class="exp-dot"></div>
+        <div class="exp-header">
+          <div class="exp-role">Technical Engineering Intern</div>
+          <div class="exp-date">Summer 2023</div>
+        </div>
+        <div class="exp-org">IIITDM Kancheepuram</div>
+        <ul class="exp-bullets">
+          <li>Assisted in embedded systems research projects with structured technical documentation.</li>
+          <li>Gained experience in cross-functional team coordination in a research environment.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="section-inner">
+    <div class="section-label">Education</div>
+    <div class="section-title">Academic background</div>
+    <div class="edu-card">
+      <div>
+        <div class="edu-degree">B.E. Biomedical Engineering</div>
+        <div class="edu-uni">College of Engineering Guindy (CEG), Anna University</div>
+        <div class="edu-scores">
+          <div class="edu-score"><div class="num">6.86</div><div class="label">CGPA</div></div>
+          <div class="edu-score"><div class="num">90%</div><div class="label">HSC (2022)</div></div>
+          <div class="edu-score"><div class="num">98.8%</div><div class="label">SSLC (2020)</div></div>
+        </div>
+      </div>
+      <div class="edu-batch">Batch 2022 – 2026</div>
+    </div>
+  </div>
+</section>
+
+<section style="padding:2rem 2rem 4rem;" class="skills-bg">
+  <div class="section-inner">
+    <div class="section-label">Leadership &amp; Activities</div>
+    <div class="section-title">Beyond academics</div>
+    <div class="leadership-grid">
+      <div class="lead-card"><div class="lead-icon">📢</div><div class="lead-info"><div class="role">Head of Media</div><div class="org">Biomedical Engg Association, CEG</div></div></div>
+      <div class="lead-card"><div class="lead-icon">🎨</div><div class="lead-info"><div class="role">Design Organizer</div><div class="org">CEG Tech Forum</div></div></div>
+      <div class="lead-card"><div class="lead-icon">📰</div><div class="lead-info"><div class="role">Media Team Member</div><div class="org">The Guindy Times</div></div></div>
+      <div class="lead-card"><div class="lead-icon">🤝</div><div class="lead-info"><div class="role">NSS Event Coordinator</div><div class="org">National Service Scheme</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-bg">
+  <div class="section-inner">
+    <div class="section-label">Contact</div>
+    <div class="section-title">Let's connect</div>
+    <div class="contact-grid">
+      <div class="contact-card"><div class="contact-icon">📧</div><div><div class="contact-label">Email</div><div class="contact-val">vigneshbiomed07@gmail.com</div></div></div>
+      <div class="contact-card"><div class="contact-icon">📞</div><div><div class="contact-label">Phone</div><div class="contact-val">+91 6380173323</div></div></div>
+      <div class="contact-card"><div class="contact-icon">💼</div><div><div class="contact-label">LinkedIn</div><div class="contact-val">linkedin.com/in/vignesh-v-76469b273</div></div></div>
+      <div class="contact-card"><div class="contact-icon">📍</div><div><div class="contact-label">Location</div><div class="contact-val">Chennai, Tamil Nadu, India</div></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Vignesh V · Biomedical Engineering Graduate · CEG Anna University</p>
+</footer>
+
+</body>
+</html>
